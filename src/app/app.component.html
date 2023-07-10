@@ -1,1 +1,37 @@
+<mat-toolbar color="primary">
+   <mat-toolbar-row>
+      <span>SWUI</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+         <mat-icon>menu</mat-icon>
+      </button>
+   </mat-toolbar-row>
+
+   <mat-toolbar-row>
+      <a [routerLink]="['/']" mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon">
+         <span>Home</span>
+         <span class="example-spacer"></span>
+         <mat-icon>home</mat-icon>
+      </a>
+   </mat-toolbar-row>
+   <mat-toolbar-row>
+      <a [routerLink]="['movies']" mat-icon-button class="example-icon favorite-icon"
+         aria-label="Example icon-button with heart icon">
+         <span>Movies</span>
+         <span class="example-spacer"></span>
+         <mat-icon>movie</mat-icon>
+      </a>
+   </mat-toolbar-row>
+   <mat-toolbar-row>
+      <a [routerLink]="['ships']" mat-icon-button class="example-icon favorite-icon"
+         aria-label="Example icon-button with heart icon">
+         <span>Ships</span>
+         <span class="example-spacer"></span>
+         <mat-icon>rocket_launch</mat-icon>
+      </a>
+   </mat-toolbar-row>
+</mat-toolbar>
+
+<br clear="all">
+
 <router-outlet></router-outlet>
