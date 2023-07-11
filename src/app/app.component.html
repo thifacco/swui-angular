@@ -2,7 +2,7 @@
    <mat-toolbar color="primary">
       <mat-toolbar-row>
          <span>SWUI</span>
-         <span class="example-spacer"></span>
+         <span class="spacer"></span>
          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
          </button>
@@ -27,6 +27,13 @@
 
 <div class="main">
    <div class="content">
+      <mat-tab-group animationDuration="0ms">
+         <mat-tab label="Movies">All movies</mat-tab>
+         <mat-tab label="Ships">All ships</mat-tab>
+       </mat-tab-group>
+
+       <br class="all">
+      
       <router-outlet></router-outlet>
    </div>
 </div>
