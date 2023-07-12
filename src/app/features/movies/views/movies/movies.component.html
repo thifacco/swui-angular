@@ -1,1 +1,11 @@
-<p>movies works!</p>
+<h1>Filmes</h1>
+
+<div *ngIf="$moviesFake | async as movies; else notFound">
+   <div *ngFor="let movie of movies">
+      <p [textContent]="movie.title"></p>
+   </div>
+</div>
+
+<ng-template #notFound>
+   <p>Nenhum filme encontrado :(</p>
+</ng-template>
