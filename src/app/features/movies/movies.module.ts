@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MoviesRoutingModule } from './movies-routing.module';
 import { MoviesComponent } from './views/movies/movies.component';
 import { MoviesFakeService } from 'src/app/services/movies-fake.service';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MoviesFakeService } from 'src/app/services/movies-fake.service';
   ],
   imports: [
     CommonModule,
-    MoviesRoutingModule
+    MoviesRoutingModule,
+    MatTableModule
   ],
   providers: [
     MoviesFakeService

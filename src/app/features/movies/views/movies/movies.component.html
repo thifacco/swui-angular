@@ -1,11 +1,21 @@
 <h1>Filmes</h1>
 
-<div *ngIf="$moviesFake | async as movies; else notFound">
+<!-- <div *ngIf="$moviesFake | async as movies; else notFound">
    <div *ngFor="let movie of movies">
       <p [textContent]="movie.title"></p>
    </div>
 </div>
-
 <ng-template #notFound>
    <p>Nenhum filme encontrado :(</p>
-</ng-template>
+</ng-template> -->
+
+<mat-table [dataSource]="moviesFake" class="mat-elevation-z8">
+   <!-- Position Column -->
+   <ng-container matColumnDef="title">
+     <mat-header-cell *matHeaderCellDef> Título </mat-header-cell>
+     <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+   </ng-container>
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+ </mat-table>
