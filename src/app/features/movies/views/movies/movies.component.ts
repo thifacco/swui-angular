@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IMovie, IMovieItem } from '../../data/interfaces/movie';
+import { IMovieItem } from '../../data/interfaces/movie';
+// import { MoviesFakeService } from '../../data/repositories/movies-fake.service';
 import { MoviesRepositoryService } from '../../data/repositories/movies-repository.service';
 
 @Component({
@@ -10,10 +11,11 @@ import { MoviesRepositoryService } from '../../data/repositories/movies-reposito
 export class MoviesComponent implements OnInit {
   // $moviesFake = this.moviesFakeService.listMovies();
 
-  displayedColumns: string[] = ['title'];
+  displayedColumns: string[] = ['episode_id', 'title', 'release_date'];
   movies: IMovieItem[] = [];
 
   constructor(
+    // private moviesFakeService: MoviesFakeService,
     private moviesService: MoviesRepositoryService
   ) { }
 
