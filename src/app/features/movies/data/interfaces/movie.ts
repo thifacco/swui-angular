@@ -1,4 +1,11 @@
 export interface IMovie {
+   count:    number;
+   next:     null;
+   previous: null;
+   results:  IMovieItem[];
+}
+
+export interface IMovieItem {
    title:         string;
    episode_id:    number;
    opening_crawl: string;

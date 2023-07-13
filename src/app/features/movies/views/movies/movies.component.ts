@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesFakeService } from 'src/app/services/movies-fake.service';
-import { IMovie } from 'src/app/interfaces/movie';
+import { IMovie, IMovieItem } from '../../data/interfaces/movie';
+import { MoviesRepositoryService } from '../../data/repositories/movies-repository.service';
 
 @Component({
   selector: 'app-movies',
@@ -11,12 +11,14 @@ export class MoviesComponent implements OnInit {
   // $moviesFake = this.moviesFakeService.listMovies();
 
   displayedColumns: string[] = ['title'];
-  movies: IMovie[] = [];
+  movies: IMovieItem[] = [];
 
-  constructor(private moviesFakeService: MoviesFakeService) { }
+  constructor(
+    private moviesService: MoviesRepositoryService
+  ) { }
 
   ngOnInit(): void {
-    this.moviesFakeService.listMovies().subscribe(data => { 
+    this.moviesService.listMovies().subscribe(data => { 
       this.movies = data;
       this.movies = [...this.movies];
     });
