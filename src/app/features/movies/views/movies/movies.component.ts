@@ -7,9 +7,17 @@ import { MoviesFakeService } from 'src/app/services/movies-fake.service';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
-  $moviesFake = this.moviesFakeService.listMovies();
+  // $moviesFake = this.moviesFakeService.listMovies();
+
+  displayedColumns: string[] = ['title'];
+  moviesFake = [];
 
   constructor(private moviesFakeService: MoviesFakeService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.moviesFakeService.listMovies().subscribe(data => { 
+      this.moviesFake = data;
+      this.moviesFake = [...this.moviesFake];
+    });
+  }
 }
