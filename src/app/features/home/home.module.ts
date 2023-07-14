@@ -6,6 +6,7 @@ import { HomeComponent } from './views/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HomeRoutingModule,
     SharedModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule
   ]
 })
 export class HomeModule { }
