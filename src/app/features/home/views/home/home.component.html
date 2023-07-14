@@ -1,1 +1,12 @@
 <p>home works!</p>
+
+<!-- <mat-tab-group animationDuration="0ms">
+         <mat-tab label="Movies">All movies</mat-tab>
+         <mat-tab label="Ships">All ships</mat-tab>
+      </mat-tab-group> -->
+
+<mat-form-field hintLabel="Máximo 20 caracteres">
+   <mat-label>Buscar em Star Wars</mat-label>
+   <input matInput #input maxlength="20" placeholder="Ex. Jedi, Luke Skywalker ...">
+   <mat-hint align="end">{{input.value.length}}/20</mat-hint>
+</mat-form-field>
