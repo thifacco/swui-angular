@@ -1,8 +1,9 @@
-<p>home works!</p>
+<h1><small>Bem vindo ao</small> Star Wars UI</h1>
 
-<mat-form-field hintLabel="Máximo 20 caracteres">
+<mat-form-field appearance="outline" hintLabel="Máximo 20 caracteres">
    <mat-label>Buscar em Star Wars</mat-label>
    <input matInput #inputSearch maxlength="20" placeholder="Ex. Jedi, Luke Skywalker ..." [(ngModel)]="searchField">
+   <mat-icon matSuffix>search</mat-icon>
    <mat-hint align="end">{{inputSearch.value.length}}/20</mat-hint>
 </mat-form-field>
 

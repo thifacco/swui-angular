@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     MatInputModule,
     MatFormFieldModule,
+    MatIconModule,
     FormsModule
   ]
 })
