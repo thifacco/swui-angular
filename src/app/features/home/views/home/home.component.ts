@@ -8,17 +8,20 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  searchField: string = '';
+  searchQuery: string = '';
   subscription: Subscription = new Subscription;
 
   constructor(private homeService: HomeRepositoryService) {}
 
   ngOnInit(): void {
-    void this.homeSearchPeople();
   }
 
-  homeSearchPeople() {
-    this.subscription = this.homeService.searchPeople().subscribe(data => console.log(data));
+  homeSearchPeople(query: string) {
+    console.log(query);
+    this.subscription = this.homeService.searchPeople(query).subscribe({
+      next: data => console.log(data),
+      error: debugError => console.error(debugError)
+    });
   }
 
   ngOnDestroy(): void {
