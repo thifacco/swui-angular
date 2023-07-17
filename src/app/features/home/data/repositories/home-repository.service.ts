@@ -16,10 +16,8 @@ export class HomeRepositoryService {
 
     const options = new HttpParams().append('search', peopleName);
 
-    return this.httpClient.get<IPeopleItem>(environment.baseApiPeople, { params: options }).pipe(
+    return this.httpClient.get<IPeople>(environment.baseApiPeople, { params: options }).pipe(
       tap(console.log),
-      map(data => data?.results),
-      tap(console.log)
     )
   }
 }
