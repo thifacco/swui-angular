@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../../data/repositories/home.service';
+import { HomeRepositoryService } from '../../data/repositories/home-repository.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { HomeService } from '../../data/repositories/home.service';
 export class HomeComponent implements OnInit {
   searchField: string = '';
 
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeRepositoryService) {}
 
   ngOnInit(): void {
     this.homeService.searchPeople().subscribe(data => console.log(data));

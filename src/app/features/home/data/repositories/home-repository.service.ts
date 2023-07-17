@@ -7,7 +7,7 @@ import { IPeople } from '../interfaces/people';
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class HomeRepositoryService {
 
   constructor(private httpClient: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { HomeService } from './data/repositories/home.service';
+import { HomeRepositoryService } from './data/repositories/home-repository.service';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { HomeService } from './data/repositories/home.service';
     FormsModule
   ],
   providers: [
-    HomeService
+    HomeRepositoryService
   ]
 })
 export class HomeModule { }
