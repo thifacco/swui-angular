@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeRepositoryService } from './data/repositories/home-repository.service';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HomeRepositoryService } from './data/repositories/home-repository.servi
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [
     HomeRepositoryService

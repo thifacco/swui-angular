@@ -12,3 +12,21 @@
          <mat-tab label="Movies">All movies</mat-tab>
          <mat-tab label="Ships">All ships</mat-tab>
       </mat-tab-group> -->
+
+<mat-table [dataSource]="people" class="mat-elevation-z8" *ngIf="people?.length">
+   <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let people"> {{people.name}} </mat-cell>
+   </ng-container>
+   <ng-container matColumnDef="height">
+      <mat-header-cell *matHeaderCellDef> Altura </mat-header-cell>
+      <mat-cell *matCellDef="let people"> {{people.height}} </mat-cell>
+   </ng-container>
+   <ng-container matColumnDef="mass">
+      <mat-header-cell *matHeaderCellDef> Mass </mat-header-cell>
+      <mat-cell *matCellDef="let people"> {{people.mass}} </mat-cell>
+   </ng-container>
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
