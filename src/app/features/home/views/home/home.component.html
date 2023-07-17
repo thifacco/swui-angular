@@ -1,12 +1,14 @@
-<p>home works!</p>
+<h1><small>Bem vindo ao</small> Star Wars UI</h1>
+
+
+<mat-form-field appearance="outline" hintLabel="Máximo 20 caracteres">
+   <mat-label>Buscar em Star Wars</mat-label>
+   <input matInput #inputSearch maxlength="20" placeholder="Ex. Darth, Luke, Obi-Wan ..." [(ngModel)]="searchQuery" (keydown.enter)="homeSearchPeople(inputSearch.value)">
+   <mat-icon matSuffix>search</mat-icon>
+   <mat-hint align="end">{{inputSearch.value.length}}/20</mat-hint>
+</mat-form-field>
 
 <!-- <mat-tab-group animationDuration="0ms">
          <mat-tab label="Movies">All movies</mat-tab>
          <mat-tab label="Ships">All ships</mat-tab>
       </mat-tab-group> -->
-
-<mat-form-field hintLabel="Máximo 20 caracteres">
-   <mat-label>Buscar em Star Wars</mat-label>
-   <input matInput #input maxlength="20" placeholder="Ex. Jedi, Luke Skywalker ...">
-   <mat-hint align="end">{{input.value.length}}/20</mat-hint>
-</mat-form-field>
