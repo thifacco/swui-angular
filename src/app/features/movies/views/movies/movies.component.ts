@@ -20,9 +20,13 @@ export class MoviesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.moviesService.listMovies().subscribe(data => { 
-      this.movies = data;
-      this.movies = [...this.movies];
+    this.moviesService.listMovies().subscribe({
+      next: (data) => { 
+        this.movies = data;
+        this.movies = [...this.movies];
+      },
+      error: (debugError) => console.log(debugError.error),
+      complete: () => console.log('Filmes carregados com sucesso')
     });
   }
 }
