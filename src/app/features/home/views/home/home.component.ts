@@ -1,33 +1,30 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HomeRepositoryService } from '../../data/repositories/home-repository.service';
-import { Subscription } from 'rxjs';
 import { IPeopleItem } from '../../data/interfaces/people';
+import { FormControl } from '@angular/forms';
+import { debounceTime, filter, map, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  searchQuery: string = '';
-  subscription: Subscription = new Subscription;
+export class HomeComponent implements OnInit {
+  peopleInputSearch = new FormControl();
+
+  peopleResults$ = this.peopleInputSearch.valueChanges.pipe(
+    debounceTime(300),
+    filter(value => value.length >= 3),
+    tap(value => console.log(`Buscando por '${value}' ...`)),
+    switchMap(value => this.homeService.searchPeople(value)),
+    map(data => this.people = data.results),
+  );
+
   displayedColumns: string[] = ['name', 'height', 'mass'];
   people: IPeopleItem[] = [];
 
   constructor(private homeService: HomeRepositoryService) {}
 
   ngOnInit(): void {
-  }
-
-  homeSearchPeople(query: string) {
-    console.log(`Search for: ${query}`);
-    this.subscription = this.homeService.searchPeople(query).subscribe({
-      next: data => this.people = data.results,
-      error: debugError => console.error(debugError)
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe;
   }
 }

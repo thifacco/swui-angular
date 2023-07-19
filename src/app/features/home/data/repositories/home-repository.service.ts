@@ -11,13 +11,8 @@ export class HomeRepositoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  searchPeople(query: string): Observable<IPeople> {
-    const peopleName = query.trim();
-
-    const options = new HttpParams().append('search', peopleName);
-
-    return this.httpClient.get<IPeople>(environment.baseApiPeople, { params: options }).pipe(
-      tap(console.log),
-    )
+  searchPeople(name: string): Observable<IPeople> {
+    const options = new HttpParams().append('search', name);
+    return this.httpClient.get<IPeople>(environment.baseApiPeople, { params: options });
   }
 }
