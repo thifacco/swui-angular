@@ -13,9 +13,8 @@ export class MoviesRepositoryService {
 
   listMovies(): Observable<any> {
     return this.httpClient.get<IMovie>(environment.baseApiFilms).pipe(
-      tap(console.log),
+      tap(data => console.log(`Encontrados ${data.count} filmes`)),
       map(data => data.results),
-      tap(console.log),
       catchError((e) => {
         return of (() => { error: e })
       })
