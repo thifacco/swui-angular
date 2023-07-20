@@ -1,1 +1,25 @@
-<p>starships works!</p>
+<h1>Todas as naves de Star Wars</h1>
+
+<div *ngIf="starshipsList$ | async as starships">
+   <mat-table [dataSource]="starships" class="mat-elevation-z8" *ngIf="starships?.length">
+      <ng-container matColumnDef="name">
+         <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+         <mat-cell *matCellDef="let starship"> {{starship.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="model">
+         <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
+         <mat-cell *matCellDef="let starship"> {{starship.model}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="manufacturer">
+         <mat-header-cell *matHeaderCellDef> Fabricante </mat-header-cell>
+         <mat-cell *matCellDef="let starship"> {{starship.manufacturer}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+   </mat-table>
+</div>
+
+<!-- <div class="error-message" #notFound *ngIf="errorMessage?.length">
+   <p>{{ errorMessage }}</p>
+</div> -->
