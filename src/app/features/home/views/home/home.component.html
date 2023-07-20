@@ -1,6 +1,5 @@
 <h1><small>Bem vindo ao</small> Star Wars UI</h1>
 
-
 <mat-form-field appearance="outline">
    <mat-label>Buscar personagens de Star Wars</mat-label>
    <input type="search" matInput placeholder="Ex: Darth, Luke, Obi-Wan ..." [formControl]="peopleInputSearch">
@@ -25,4 +24,8 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
    </mat-table>
+</div>
+
+<div class="error-message" #notFound *ngIf="errorMessage?.length">
+   <p>{{ errorMessage }}</p>
 </div>

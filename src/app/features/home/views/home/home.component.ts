@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeRepositoryService } from '../../data/repositories/home-repository.service';
 import { IPeopleItem } from '../../data/interfaces/people';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +11,8 @@ import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 
 })
 export class HomeComponent implements OnInit {
   peopleInputSearch = new FormControl();
+
+  errorMessage = '';
 
   peopleResults$ = this.peopleInputSearch.valueChanges.pipe(
     // atrasa as emissões do observable de origem por 300 ms
@@ -30,6 +32,11 @@ export class HomeComponent implements OnInit {
     
     // retorna o observable de origem com os dados modificados
     map(data => this.people = data.results),
+
+    catchError(e => {
+      console.log(`Erro retornado da API: ${e.status} - ${e.name}`);
+      return throwError(() => new Error(this.errorMessage = 'Ocorreu um erro ao tentar acessar a API. Tente novamente mais tarde.'))
+    })
   );
 
   displayedColumns: string[] = ['name', 'height', 'mass'];

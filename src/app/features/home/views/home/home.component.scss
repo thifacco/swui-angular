@@ -1,7 +1,13 @@
 .mat-mdc-form-field {
-   width: 100%;
+  width: 100%;
 }
 
 .mat-elevation-z8 {
-   margin-top: 30px;
+  margin-top: 30px;
+}
+
+.error-message {
+  p {
+    text-align: center;
+  }
 }
