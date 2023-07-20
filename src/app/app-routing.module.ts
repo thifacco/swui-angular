@@ -12,8 +12,8 @@ const routes: Routes = [
     loadChildren: () => import('./features/movies/movies.module').then((routes) => routes.MoviesModule)
   },
   {
-    path: 'ships',
-    loadChildren: () => import('./features/ships/ships.module').then((routes) => routes.ShipsModule)
+    path: 'starships',
+    loadChildren: () => import('./features/starships/starships.module').then((routes) => routes.StarshipsModule)
   },
 ];
 
