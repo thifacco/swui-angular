@@ -1,13 +1,24 @@
+import { ISwapi } from "src/app/features/shared/interfaces/swapi";
+const swapiAPIObject: ISwapi = {
+   base: {
+      url: 'https://swapi.dev/api'
+   },
+   resources: {
+      films: 'films',
+      people: 'people',
+      planets: 'planets',
+      species: 'species',
+      starships: 'starships',
+      vehicles: 'vehicles'
+   },
+   searching: {
+      url: 'search'
+   }
+};
+
 export const environment = {
    baseApiFilmsFake: 'assets/data/films.json',
    baseApiFilms: 'https://swapi.dev/api/films',
    baseApiPeople: 'https://swapi.dev/api/people',
-   baseApiObjects: {
-      films: 'https://swapi.dev/api/films/',
-      people: 'https://swapi.dev/api/people/',
-      planets: 'https://swapi.dev/api/planets/',
-      species: 'https://swapi.dev/api/species/',
-      starships: 'https://swapi.dev/api/starships/',
-      vehicles: 'https://swapi.dev/api/vehicles/'
-   }
+   swapiAPIObject: swapiAPIObject
 };
