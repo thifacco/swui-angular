@@ -8,10 +8,15 @@ import { IStarship } from '../interfaces/starship';
   providedIn: 'root'
 })
 export class StarshipsRepositoryService {
+  baseAPI = environment.swapiAPIObject.base.url;
 
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<IStarship> {
-    return this.httpClient.get<IStarship>(environment.baseApiObjects.starships);
+    return this.httpClient.get<IStarship>(`${this.baseAPI}/${environment.swapiAPIObject.resources.starships}`);
   }
+
+  // getSearch(query): Observable<IStarship> {
+  //   return this.httpClient.get<IStarship>(environment.baseApiObjects.starships)
+  // }
 }
