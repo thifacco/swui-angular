@@ -4,15 +4,15 @@ const swapiAPIObject: ISwapi = {
       url: 'https://swapi.dev/api'
    },
    resources: {
-      films: 'films',
-      people: 'people',
-      planets: 'planets',
-      species: 'species',
-      starships: 'starships',
-      vehicles: 'vehicles'
+      films: '/films',
+      people: '/people',
+      planets: '/planets',
+      species: '/species',
+      starships: '/starships',
+      vehicles: '/vehicles'
    },
-   searching: {
-      url: 'search'
+   features: {
+      search: '/search'
    }
 };
 
