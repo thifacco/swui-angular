@@ -4,21 +4,19 @@ const swapiAPIObject: ISwapi = {
       url: 'https://swapi.dev/api'
    },
    resources: {
-      films: 'films',
-      people: 'people',
-      planets: 'planets',
-      species: 'species',
-      starships: 'starships',
-      vehicles: 'vehicles'
+      films: '/films',
+      people: '/people',
+      planets: '/planets',
+      species: '/species',
+      starships: '/starships',
+      vehicles: '/vehicles'
    },
-   searching: {
-      url: 'search'
+   features: {
+      search: '/search'
    }
 };
 
 export const environment = {
    baseApiFilmsFake: 'assets/data/films.json',
-   baseApiFilms: 'https://swapi.dev/api/films',
-   baseApiPeople: 'https://swapi.dev/api/people',
    swapiAPIObject: swapiAPIObject
 };
