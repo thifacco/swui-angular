@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StarshipsComponent } from './views/starships/starships.component';
 import { StarshipsRepositoryService } from './data/starships-repository.service';
 import { StarshipsRoutingModule } from './starships-routing.module';
-import { MatTableModule } from '@angular/material/table';
-
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,8 +11,8 @@ import { MatTableModule } from '@angular/material/table';
   ],
   imports: [
     CommonModule,
-    StarshipsRoutingModule,
-    MatTableModule
+    SharedModule,
+    StarshipsRoutingModule
   ],
   providers: [
     StarshipsRepositoryService

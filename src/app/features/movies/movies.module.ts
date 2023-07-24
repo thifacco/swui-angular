@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MoviesRoutingModule } from './movies-routing.module';
 import { MoviesComponent } from './views/movies/movies.component';
 import { MoviesFakeService } from './data/repositories/movies-fake.service';
-import { MatTableModule } from '@angular/material/table';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,8 +11,8 @@ import { MatTableModule } from '@angular/material/table';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     MoviesRoutingModule,
-    MatTableModule
   ],
   providers: [
     MoviesFakeService
