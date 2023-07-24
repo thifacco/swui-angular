@@ -3,6 +3,7 @@ import { StarshipsRepositoryService } from '../../data/starships-repository.serv
 import { combineLatest, debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs';
 import { IStarshipItem } from '../../interfaces/starship';
 import { FormControl } from '@angular/forms';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-starships',
@@ -11,14 +12,13 @@ import { FormControl } from '@angular/forms';
 })
 export class StarshipsComponent implements OnInit {
 
+  displayedColumns: string[] = ['name', 'model', 'manufacturer'];
   starshipInputSearch = new FormControl();
-
   starships: IStarshipItem[] = [];
   starshipsLatest: IStarshipItem[] = [];
-
   starshipsCount: number = 0;
-
-  displayedColumns: string[] = ['name', 'model', 'manufacturer'];
+  starshipsPageIndexStart: number = 0;
+  starshipsDisplayItemsPerPage: number = 10;
 
   starshipsList$ = this.starshipRepositoryService.getAll().pipe(
     distinctUntilChanged(),
@@ -40,7 +40,7 @@ export class StarshipsComponent implements OnInit {
     switchMap(inputSearchValue => this.starshipRepositoryService.getSearch(inputSearchValue)),
     map(data => {
       this.starships = data.results; 
-      this.starshipsCount = data.count
+      this.starshipsCount = data.count;
     })
   );
   
@@ -54,5 +54,13 @@ export class StarshipsComponent implements OnInit {
 
     const combineObservables = combineLatest(observables);
     combineObservables.subscribe();
+  }
+
+  handlePageChange(event: PageEvent) {
+    const pageIndex = event.pageIndex + 1;
+    
+    this.starshipRepositoryService.getAll(pageIndex).subscribe(
+      data => this.starships = data.results
+    );
   }
 }
