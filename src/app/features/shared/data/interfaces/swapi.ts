@@ -41,8 +41,8 @@ export class Swapi implements ISwapi {
       return this.base.url + this.chooseResourceByKey(key);
    }
    
-   getBaseResourceURLSearch(key: string) {
-      return this.base.url + this.chooseResourceByKey(key) + this.features.search;
+   getFeatureSearch() {
+      return this.features.search;
    }
 
    private chooseResourceByKey(key: string) {

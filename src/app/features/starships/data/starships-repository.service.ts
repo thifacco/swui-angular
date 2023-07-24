@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -20,6 +20,7 @@ export class StarshipsRepositoryService {
   }
 
   getSearch(query: string): Observable<IStarship> {
-    return this.httpClient.get<IStarship>(this.swapi.getBaseResourceURLSearch(this.resourceKey));
+    const options = new HttpParams().append(this.swapi.getFeatureSearch(), query);
+    return this.httpClient.get<IStarship>(this.swapi.getBaseResourceURL(this.resourceKey), { params: options });
   }
 }
