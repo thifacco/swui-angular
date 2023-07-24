@@ -16,23 +16,32 @@ export class StarshipsComponent implements OnInit {
   starships: IStarshipItem[] = [];
   starshipsLatest: IStarshipItem[] = [];
 
+  starshipsCount: number = 0;
+
   displayedColumns: string[] = ['name', 'model', 'manufacturer'];
 
   starshipsList$ = this.starshipRepositoryService.getAll().pipe(
     distinctUntilChanged(),
-    switchMap(() => this.starshipRepositoryService.getAll()),
-    map(data => this.starships = data.results),
-    tap(data => this.starshipsLatest = data)
+    map(data => {
+      this.starships = data.results;
+      this.starshipsLatest = data.results;
+      this.starshipsCount = data.count;
+    })
   );
 
   starshipsSearch$ = this.starshipInputSearch.valueChanges.pipe(
     debounceTime(300),
-    tap(inputSearchvalue => this.starships = (inputSearchvalue.length > 0) ? this.starshipsLatest : []),
+    tap(inputSearchvalue => {
+      this.starships = (inputSearchvalue.length === 0) ? this.starshipsLatest : []
+    }),
     filter(inputSearchvalue => inputSearchvalue.length >= 3),
     tap(inputSearchValue => console.log(`Buscando por ${inputSearchValue}`)),
     distinctUntilChanged(),
     switchMap(inputSearchValue => this.starshipRepositoryService.getSearch(inputSearchValue)),
-    map(data => this.starships = data.results)
+    map(data => {
+      this.starships = data.results; 
+      this.starshipsCount = data.count
+    })
   );
   
   constructor(private starshipRepositoryService: StarshipsRepositoryService) {}
@@ -44,8 +53,6 @@ export class StarshipsComponent implements OnInit {
     }
 
     const combineObservables = combineLatest(observables);
-    combineObservables.subscribe({ 
-      next: (data) => this.starships}
-    );
+    combineObservables.subscribe();
   }
 }

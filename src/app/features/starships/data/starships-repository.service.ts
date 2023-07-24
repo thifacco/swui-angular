@@ -15,8 +15,9 @@ export class StarshipsRepositoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(): Observable<IStarship> {
-    return this.httpClient.get<IStarship>(this.swapi.getBaseResourceURL(this.resourceKey));
+  getAll(page: number = 1): Observable<IStarship> {
+    const options = new HttpParams().append(this.swapi.getFeaturePage(), page);
+    return this.httpClient.get<IStarship>(this.swapi.getBaseResourceURL(this.resourceKey), { params: options });
   }
 
   getSearch(query: string): Observable<IStarship> {
