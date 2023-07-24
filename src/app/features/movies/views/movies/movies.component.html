@@ -9,7 +9,7 @@
    <p>Nenhum filme encontrado :(</p>
 </ng-template> -->
 
-<mat-table [dataSource]="movies" class="mat-elevation-z8">
+<mat-table [dataSource]="movies" class="mat-elevation-z8" *ngIf="movies?.length">
    <ng-container matColumnDef="episode_id">
       <mat-header-cell *matHeaderCellDef> Episódio </mat-header-cell>
       <mat-cell *matCellDef="let movie"> {{movie.episode_id}} </mat-cell>
@@ -26,3 +26,5 @@
    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
+
+<app-loading [spinning]="!movies.length"></app-loading>

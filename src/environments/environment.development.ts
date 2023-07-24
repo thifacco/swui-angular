@@ -1,4 +1,4 @@
-import { ISwapi } from "src/app/features/shared/interfaces/swapi";
+import { ISwapi } from "src/app/features/shared/data/interfaces/swapi";
 const swapiAPIObject: ISwapi = {
    base: {
       url: 'https://swapi.dev/api'

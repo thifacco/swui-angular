@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { IStarship } from '../interfaces/starship';
-import { Swapi } from '../../shared/interfaces/swapi';
+import { Swapi } from '../../shared/data/interfaces/swapi';
 
 @Injectable({
   providedIn: 'root'

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { StarshipsRepositoryService } from '../../data/starships-repository.service';
 import { map } from 'rxjs';
 import { IStarshipItem } from '../../interfaces/starship';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-starships',

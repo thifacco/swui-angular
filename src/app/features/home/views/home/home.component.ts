@@ -11,6 +11,7 @@ import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap,
 })
 export class HomeComponent implements OnInit {
   peopleInputSearch = new FormControl();
+  loading = false;
 
   errorMessage = '';
 
@@ -22,7 +23,10 @@ export class HomeComponent implements OnInit {
     filter(inputSearchvalue => inputSearchvalue.length >= 3),
     
     // permite um debug do response
-    tap(inputSearchvalue => console.log(`Buscando por '${inputSearchvalue}' ...`)),
+    tap(inputSearchvalue => {
+      console.log(`Buscando por '${inputSearchvalue}' ...`);
+      this.loading = true;
+    }),
 
     // retorna um observable emitido anteriormente, elimina duplicação
     distinctUntilChanged(),
@@ -32,6 +36,9 @@ export class HomeComponent implements OnInit {
     
     // retorna o observable de origem com os dados modificados
     map(data => this.people = data.results),
+
+    // encerra o loading
+    tap(() => this.loading = false),
 
     catchError(e => {
       console.log(`Erro retornado da API: ${e.status} - ${e.name}`);
