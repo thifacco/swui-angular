@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, tap, map, catchError, of } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { IMovie } from '../interfaces/movie';
-import { Swapi } from 'src/app/features/shared/interfaces/swapi';
+import { Swapi } from 'src/app/features/shared/data/interfaces/swapi';
 
 @Injectable({
   providedIn: 'root'
