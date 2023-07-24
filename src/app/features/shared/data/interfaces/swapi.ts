@@ -19,6 +19,7 @@ export interface ISwapiResource {
 
 export interface ISwapiFeature {
    search: string;
+   page: string;
 }
 
 export class Swapi implements ISwapi {
@@ -43,6 +44,10 @@ export class Swapi implements ISwapi {
    
    getFeatureSearch() {
       return this.features.search;
+   }
+
+   getFeaturePage() {
+      return this.features.page;
    }
 
    private chooseResourceByKey(key: string) {

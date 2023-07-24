@@ -12,7 +12,8 @@ const swapiAPIObject: ISwapi = {
       vehicles: '/vehicles'
    },
    features: {
-      search: 'search'
+      search: 'search',
+      page: 'page'
    }
 };
 
