@@ -1,6 +1,12 @@
 <h1>Todas as naves de Star Wars</h1>
 
-<div *ngIf="starshipsList$ | async as starships">
+<mat-form-field appearance="outline">
+   <mat-label>Buscar naves em Star Wars</mat-label>
+   <input type="search" matInput placeholder="Ex: Falcon, Death Star, Corvette ..." [formControl]="starshipInputSearch">
+   <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+<div class="starships" *ngIf="starships?.length">
    <mat-table [dataSource]="starships" class="mat-elevation-z8" *ngIf="starships?.length">
       <ng-container matColumnDef="name">
          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
@@ -19,9 +25,5 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
    </mat-table>
 </div>
-
-<!-- <div class="error-message" #notFound *ngIf="errorMessage?.length">
-   <p>{{ errorMessage }}</p>
-</div> -->
 
 <app-loading [spinning]="!starships.length"></app-loading>
