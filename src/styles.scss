@@ -11,3 +11,17 @@ body {
  
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+.main {
+  .content {
+    padding: 30px 16px;
+  }
+}
