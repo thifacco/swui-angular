@@ -1,17 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './features/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,15 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatTabsModule,
-    MatTableModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,26 @@
+<div class="header">
+   <mat-toolbar color="primary">
+      <mat-toolbar-row>
+         <span>SWUI</span>
+         <span class="spacer"></span>
+         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+         </button>
+      </mat-toolbar-row>
+   </mat-toolbar>
+
+   <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/']">
+         <mat-icon>home</mat-icon>
+         <span>Home</span>
+      </button>
+      <button mat-menu-item [routerLink]="['movies']">
+         <mat-icon>movies</mat-icon>
+         <span>Movies</span>
+      </button>
+      <button mat-menu-item [routerLink]="['starships']">
+         <mat-icon>rocket_launch</mat-icon>
+         <span>Starships</span>
+      </button>
+   </mat-menu>
+</div>
