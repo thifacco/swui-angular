@@ -1,7 +1,26 @@
-.mat-mdc-form-field {
+mat-form-field {
    width: 100%;
- }
- 
- .mat-elevation-z8 {
-   margin-top: 30px;
- }
+   margin-bottom: 30px;
+}
+
+mat-table {
+  width: 100%;
+
+  tr {
+    &.expanded-detail {
+      height: 0;
+      background-color: rgba(255, 255, 255, 0.12);
+
+      .expanded-detail-element {
+        p {
+          margin: 6px 0;
+    
+          @media (min-width: 576px) {
+            width: 50%;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}

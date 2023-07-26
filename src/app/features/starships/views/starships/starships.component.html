@@ -7,7 +7,7 @@
 </mat-form-field>
 
 <div class="starships" *ngIf="starships?.length">
-   <mat-table [dataSource]="starships" class="mat-elevation-z8" *ngIf="starships?.length">
+   <mat-table [dataSource]="starships" class="mat-elevation-z8" multiTemplateDataRows *ngIf="starships?.length">
       <ng-container matColumnDef="name">
          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
          <mat-cell *matCellDef="let starship"> {{starship.name}} </mat-cell>
@@ -16,13 +16,45 @@
          <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
          <mat-cell *matCellDef="let starship"> {{starship.model}} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="manufacturer">
-         <mat-header-cell *matHeaderCellDef> Fabricante </mat-header-cell>
-         <mat-cell *matCellDef="let starship"> {{starship.manufacturer}} </mat-cell>
+      <ng-container matColumnDef="starship_class">
+         <mat-header-cell *matHeaderCellDef> Classe </mat-header-cell>
+         <mat-cell *matCellDef="let starship"> {{starship.starship_class}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="expand">
+         <mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+         <mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+            <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+            </button>
+         </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+         <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <div class="expanded-detail-element"
+               [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+               
+               <p>Fabricado por: {{element.manufacturer}}</p>
+               <p>Capacidade de carga: {{element.cargo_capacity}}</p>
+               <p>Avaliação do Hiperdrive: {{element.hyperdrive_rating}}</p>
+               <p>Tamanho: {{element.length}}</p>
+               <p>Velocidade máxima: {{element.max_atmosphering_speed}}</p>
+               <p>Tripulação: {{element.crew}}</p>
+               <p>Passageiros: {{element.passengers}}</p>
+            </div>
+         </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row 
+         *matRowDef="let row; columns: displayedColumns;" 
+         class="element-row" 
+         [class.expanded-row]="expandedElement === row" 
+         (click)="expandedElement = expandedElement === row ? null : row">
+      </mat-row>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="expanded-detail"></tr>
    </mat-table>
 
    <mat-paginator 
