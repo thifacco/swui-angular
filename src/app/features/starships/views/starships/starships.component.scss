@@ -1,7 +1,12 @@
-.mat-mdc-form-field {
+mat-form-field {
    width: 100%;
- }
- 
- .mat-elevation-z8 {
-   margin-top: 30px;
- }
+   margin-bottom: 30px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+tr.starship-detail {
+  height: 0;
+}

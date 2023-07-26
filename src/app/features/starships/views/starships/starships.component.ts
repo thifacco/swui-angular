@@ -4,15 +4,24 @@ import { combineLatest, debounceTime, distinctUntilChanged, filter, map, switchM
 import { IStarshipItem } from '../../interfaces/starship';
 import { FormControl } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { StarshipDetails } from '../../interfaces/starship-details';
 
 @Component({
   selector: 'app-starships',
   templateUrl: './starships.component.html',
-  styleUrls: ['./starships.component.scss']
+  styleUrls: ['./starships.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
+
 export class StarshipsComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'model', 'manufacturer'];
   starshipInputSearch = new FormControl();
   starships: IStarshipItem[] = [];
   starshipsLatest: IStarshipItem[] = [];
@@ -43,6 +52,9 @@ export class StarshipsComponent implements OnInit {
       this.starshipsCount = data.count;
     })
   );
+
+  displayedColumns: string[] = ['name', 'model', 'starship_class', 'expand'];
+  expandedElement: StarshipDetails | undefined;
   
   constructor(private starshipRepositoryService: StarshipsRepositoryService) {}
 
