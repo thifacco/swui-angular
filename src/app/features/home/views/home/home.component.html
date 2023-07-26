@@ -36,3 +36,31 @@
 </div>
 
 <app-loading [spinning]="loading"></app-loading>
+
+<div class="cards">
+   <mat-card class="card">
+      <mat-card-header>
+         <mat-card-title>Todos os filmes</mat-card-title>
+         <mat-card-subtitle>Star Wars</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+         <p>Veja agora a lista de todos os filmes da franquia <strong>Star Wars</strong>.</p>
+      </mat-card-content>
+      <mat-card-actions>
+         <button [routerLink]="['/movies']" mat-button>Ver todos os filmes</button>
+      </mat-card-actions>
+   </mat-card>
+
+   <mat-card class="card">
+      <mat-card-header>
+         <mat-card-title>Todas as naves</mat-card-title>
+         <mat-card-subtitle>Star Wars</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+         <p>Veja agora a lista de todas as naves da franquia <strong>Star Wars</strong>.</p>
+      </mat-card-content>
+      <mat-card-actions>
+         <button [routerLink]="['/starships']" mat-button>Ver todas as naves</button>
+      </mat-card-actions>
+   </mat-card>
+</div>

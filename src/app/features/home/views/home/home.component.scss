@@ -41,3 +41,25 @@ mat-table {
     text-align: center;
   }
 }
+
+.cards {
+  @media (min-width: 576px) {
+    display: flex;
+  }
+
+  .card {
+    margin: 10px 0;
+
+    @media (min-width: 576px) {
+      width: 50%;
+  
+      &:first-child {
+        margin-right: 10px;
+      }
+  
+      &:last-child {
+        margin-left: 10px;
+      }
+    }
+  }
+}
