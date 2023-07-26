@@ -1,11 +1,16 @@
 <div class="header">
    <mat-toolbar color="primary">
       <mat-toolbar-row>
-         <span>SWUI</span>
-         <span class="spacer"></span>
-         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <mat-icon>more_vert</mat-icon>
+         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Expandir o menu">
+            <mat-icon>menu</mat-icon>
          </button>
+         <span class="logo-container">
+            <img src="assets/images/swui-logo.png" alt="SWUI">
+         </span>
+         <span class="spacer"></span>
+         <a href="https://github.com/thifacco/swui-angular" target="_blank" title="Repositório swui-angular no GitHub @thifacco">
+            <img src="https://img.shields.io/github/followers/thifacco.svg?style=social&label=Follow&maxAge=2592000">
+         </a>
       </mat-toolbar-row>
    </mat-toolbar>
 
@@ -16,11 +21,11 @@
       </button>
       <button mat-menu-item [routerLink]="['movies']">
          <mat-icon>movies</mat-icon>
-         <span>Movies</span>
+         <span>Filmes</span>
       </button>
       <button mat-menu-item [routerLink]="['starships']">
          <mat-icon>rocket_launch</mat-icon>
-         <span>Starships</span>
+         <span>Naves</span>
       </button>
    </mat-menu>
 </div>

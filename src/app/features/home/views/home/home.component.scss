@@ -1,8 +1,38 @@
-.mat-mdc-form-field {
+.lead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  
+  .headline {
+    display: inline-block;
+    text-align: center;
+
+    h1, p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      margin-bottom: 0;
+
+      strong {
+        color: wheat;
+      }
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+mat-form-field {
   width: 100%;
 }
 
-.mat-elevation-z8 {
+mat-table {
   margin-top: 30px;
 }
 

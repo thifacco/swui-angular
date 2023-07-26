@@ -1,5 +1,12 @@
 # Star Wars UI
 
+<div style="display: flex; flex-direction: row; align-items: start; justify-content: left;">
+<img src="https://img.shields.io/github/forks/thifacco/screen-match-java.svg">
+<img src="https://img.shields.io/github/stars/thifacco/screen-match-java.svg">
+<img src="https://img.shields.io/github/watchers/thifacco/screen-match-java.svg">
+<img src="https://img.shields.io/github/followers/thifacco.svg?style=social&label=Follow&maxAge=2592000">
+</div>
+
 Projeto desenvolvido com Angular v15.2.0-lte para treinar consumo de API [SWAPI](https://swapi.dev) proposto pelo desafio #7DaysOfCode da Alura.
 
 ## Features
@@ -18,7 +25,7 @@ Projeto desenvolvido com Angular v15.2.0-lte para treinar consumo de API [SWAPI]
 - exibe detalhes de cada nave em cada item da `mat-table`
 - paginação de resultados
 
-### Iniciar a aplicação
+## Iniciar a aplicação
 
 ```
 npm start
