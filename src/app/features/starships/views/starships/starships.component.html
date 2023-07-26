@@ -33,16 +33,16 @@
 
       <ng-container matColumnDef="expandedDetail">
          <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-            <div class="starship-detail-element"
+            <div class="expanded-detail-element"
                [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                
-               manufacturer: {{element.manufacturer}} <br>
-               cargo_capacity: {{element.cargo_capacity}} <br>
-               crew: {{element.crew}} <br>
-               hyperdrive_rating: {{element.hyperdrive_rating}} <br>
-               length: {{element.length}} <br>
-               max_atmosphering_speed: {{element.max_atmosphering_speed}} <br>
-               passengers: {{element.passengers}}
+               <p>Fabricado por: {{element.manufacturer}}</p>
+               <p>Capacidade de carga: {{element.cargo_capacity}}</p>
+               <p>Avaliação do Hiperdrive: {{element.hyperdrive_rating}}</p>
+               <p>Tamanho: {{element.length}}</p>
+               <p>Velocidade máxima: {{element.max_atmosphering_speed}}</p>
+               <p>Tripulação: {{element.crew}}</p>
+               <p>Passageiros: {{element.passengers}}</p>
             </div>
          </mat-cell>
       </ng-container>
@@ -54,7 +54,7 @@
          [class.expanded-row]="expandedElement === row" 
          (click)="expandedElement = expandedElement === row ? null : row">
       </mat-row>
-      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="starship-detail"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="expanded-detail"></tr>
    </mat-table>
 
    <mat-paginator 
