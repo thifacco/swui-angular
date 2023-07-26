@@ -1,7 +1,12 @@
-<h1><small>Bem vindo ao</small> Star Wars UI</h1>
+<div class="lead">
+   <div class="headline">
+      <h1>Bem vindo ao SWUI</h1>
+      <p>Veja dados sobre filmes, personagens e naves diretamente da SWAPI - Star Wars API</p>
+   </div>
+</div>
 
 <mat-form-field appearance="outline">
-   <mat-label>Buscar personagens de Star Wars</mat-label>
+   <mat-label>Busque personagens em Star Wars</mat-label>
    <input type="search" matInput placeholder="Ex: Darth, Luke, Obi-Wan ..." [formControl]="peopleInputSearch">
    <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>
@@ -31,3 +36,31 @@
 </div>
 
 <app-loading [spinning]="loading"></app-loading>
+
+<div class="cards">
+   <mat-card class="card">
+      <mat-card-header>
+         <mat-card-title>Todos os filmes</mat-card-title>
+         <mat-card-subtitle>Star Wars</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+         <p>Veja agora a lista de todos os filmes da franquia <strong>Star Wars</strong>.</p>
+      </mat-card-content>
+      <mat-card-actions>
+         <button [routerLink]="['/movies']" mat-button>Ver todos os filmes</button>
+      </mat-card-actions>
+   </mat-card>
+
+   <mat-card class="card">
+      <mat-card-header>
+         <mat-card-title>Todas as naves</mat-card-title>
+         <mat-card-subtitle>Star Wars</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+         <p>Veja agora a lista de todas as naves da franquia <strong>Star Wars</strong>.</p>
+      </mat-card-content>
+      <mat-card-actions>
+         <button [routerLink]="['/starships']" mat-button>Ver todas as naves</button>
+      </mat-card-actions>
+   </mat-card>
+</div>
