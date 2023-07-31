@@ -1,22 +1,21 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { IPeople, IPeopleItem } from '../interfaces/people';
-import { Swapi } from 'src/app/features/shared/data/interfaces/swapi';
+import { SwapiRepository } from 'src/app/features/shared/data/repositories/swapi-repository';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeRepositoryService {
+export class HomeRepositoryService extends SwapiRepository {
 
-  private swapi = new Swapi(environment.swapiAPIObject);
-  private resourceKey = 'people';
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    super(environment.swapiAPIObject, 'people');
+  }
 
   searchPeople(name: string): Observable<IPeople> {
     const options = new HttpParams().append('search', name);
-    return this.httpClient.get<IPeople>(this.swapi.getBaseResourceURL(this.resourceKey), { params: options });
+    return this.httpClient.get<IPeople>(this.getBaseResourceURL(), { params: options });
   }
 }

@@ -3,25 +3,24 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { IStarship } from '../interfaces/starship';
-import { Swapi } from '../../shared/data/interfaces/swapi';
+import { SwapiRepository } from '../../shared/data/repositories/swapi-repository';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StarshipsRepositoryService {
+export class StarshipsRepositoryService extends SwapiRepository {
 
-  private swapi = new Swapi(environment.swapiAPIObject);
-  private resourceKey = 'starships';
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    super(environment.swapiAPIObject, 'starships');
+  }
 
   getAll(page: number = 1): Observable<IStarship> {
-    const options = new HttpParams().append(this.swapi.getFeaturePage(), page);
-    return this.httpClient.get<IStarship>(this.swapi.getBaseResourceURL(this.resourceKey), { params: options });
+    const options = new HttpParams().append(this.getFeaturePage(), page);
+    return this.httpClient.get<IStarship>(this.getBaseResourceURL(), { params: options });
   }
 
   getSearch(query: string): Observable<IStarship> {
-    const options = new HttpParams().append(this.swapi.getFeatureSearch(), query);
-    return this.httpClient.get<IStarship>(this.swapi.getBaseResourceURL(this.resourceKey), { params: options });
+    const options = new HttpParams().append(this.getFeatureSearch(), query);
+    return this.httpClient.get<IStarship>(this.getBaseResourceURL(), { params: options });
   }
 }
