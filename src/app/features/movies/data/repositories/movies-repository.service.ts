@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap, map, catchError, of } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { IMovie } from '../interfaces/movie';
 import { SwapiRepository } from 'src/app/features/shared/data/repositories/swapi-repository';
 

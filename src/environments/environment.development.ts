@@ -18,6 +18,7 @@ const swapiAPIObject: ISwapi = {
 };
 
 export const environment = {
+   production: false,
    baseApiFilmsFake: 'assets/data/films.json',
    swapiAPIObject: swapiAPIObject
 };
