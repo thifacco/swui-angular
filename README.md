@@ -7,7 +7,9 @@
 <img src="https://img.shields.io/github/followers/thifacco.svg?style=social&label=Follow&maxAge=2592000">
 </div>
 
-Projeto desenvolvido com Angular v15.2.0-lte para treinar consumo de API [SWAPI](https://swapi.dev) proposto pelo desafio #7DaysOfCode da Alura.
+Aplicação desenvolvida com Angular v15-lts para treinar consumo de API [SWAPI](https://swapi.dev) proposto pelo desafio #7DaysOfCode da Alura.
+
+Link da aplicação no Netlify: https://swui-angular.netlify.app/
 
 ## Features
 
