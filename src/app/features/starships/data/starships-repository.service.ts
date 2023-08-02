@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { IStarship } from '../interfaces/starship';
 import { SwapiRepository } from '../../shared/data/repositories/swapi-repository';
 
