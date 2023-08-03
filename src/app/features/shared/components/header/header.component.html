@@ -15,17 +15,17 @@
    </mat-toolbar>
 
    <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['/']">
+      <a mat-menu-item [routerLink]="['/']">
          <mat-icon>home</mat-icon>
          <span>Home</span>
-      </button>
-      <button mat-menu-item [routerLink]="['movies']">
+      </a>
+      <a mat-menu-item [routerLink]="['movies']">
          <mat-icon>movies</mat-icon>
          <span>Filmes</span>
-      </button>
-      <button mat-menu-item [routerLink]="['starships']">
+      </a>
+      <a mat-menu-item [routerLink]="['starships']">
          <mat-icon>rocket_launch</mat-icon>
          <span>Naves</span>
-      </button>
+      </a>
    </mat-menu>
 </div>
