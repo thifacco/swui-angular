@@ -34,3 +34,8 @@ Página de Naves
 ```
 npm start
 ```
+
+## Executar os testes
+```
+npm run test
+```
