@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { StarshipsRepositoryService } from '../../data/starships-repository.service';
+import { StarshipsRepositoryService } from '../../data/repositories/starships-repository.service';
 import { combineLatest, debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs';
-import { IStarshipItem } from '../../interfaces/starship';
+import { IStarshipItem } from '../../data/interfaces/starship';
 import { FormControl } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { StarshipDetails } from '../../interfaces/starship-details';
+import { StarshipDetails } from '../../data/interfaces/starship-details';
 
 @Component({
   selector: 'app-starships',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StarshipsComponent } from './views/starships/starships.component';
-import { StarshipsRepositoryService } from './data/starships-repository.service';
+import { StarshipsRepositoryService } from './data/repositories/starships-repository.service';
 import { StarshipsRoutingModule } from './starships-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
