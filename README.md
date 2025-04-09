@@ -1,6 +1,5 @@
-<div style="width: 100%; max-width: 300px; height: 150px; background-color: #6a0dad; display: flex; align-items: center; justify-content: center;">
-  <img src="https://github.com/thifacco/swui-angular/blob/master/src/assets/images/swui-logo.png" alt="Logotipo" style="max-width: 100%; max-height: 100%;">
-</div>
+<img src="https://github.com/thifacco/swui-angular/blob/master/src/assets/images/swui-logo.png" alt="Logotipo" style="max-width: 100%; max-height: 100%; background-color: #6a0dad;">
+
 
 ## Star Wars UI
 Essa é uma aplicação desenvolvida com Angular para treinar consumo de API proposto pelo desafio #7DaysOfCode da Alura.
