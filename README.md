@@ -2,7 +2,7 @@
 
 
 ## Star Wars UI
-Essa é uma aplicação desenvolvida com Angular para treinar consumo de API [SWAPI](https://swapi.dev) proposto pelo desafio #7DaysOfCode da Alura.
+Essa é uma aplicação desenvolvida com Angular para treinar consumo de API proposto pelo desafio #7DaysOfCode da Alura.
 
 
 ## Tecnologias 
@@ -36,7 +36,7 @@ npm start
 ```
 Esse comando irá iniciar a aplicação e abrir automaticamente o endereço [http://localhost:4200/](http://localhost:4200/) no navegador.
 
-## Como usar a aplicaçao
+## Como usar a aplicação
 
 ### 1 - Quando você acessar a url do projeto, verá a Home Page.
 
@@ -68,15 +68,17 @@ As principais funcionalidades dessa aplicação são:
 
 ## Links
   - Repositório: [https://github.com/thifacco/swui-angular](https://github.com/thifacco/swui-angular)
+  - Star Wars API (SWAPI): [https://swapi.dev](https://swapi.dev)
+  - Netlify View: [https://swui-angular.netlify.app/](https://swui-angular.netlify.app/)
 
-  ## Versioning
+## Versioning
 
-  1.7.4
+1.7.4
 
 
-  ## Autor
+## Autor
 
   * **Tiago Luis Facco** 
 
-  Siga-me no github e vamos juntos!
-  Obrigado pela visita e bons códigos!
+Siga-me no github e vamos juntos!
+Obrigado pela visita e bons códigos!
