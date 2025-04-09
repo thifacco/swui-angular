@@ -1,5 +1,4 @@
-<div style="width: 100%; max-width: 300px; height: 150px; background-color: #6a0dad; display: flex; align-items: center; justify-content: center; color: white; font-family: Arial, sans-serif; font-size: 20px; text-align: center;">
-![Logo of the project](https://github.com/thifacco/swui-angular/blob/master/src/assets/images/swui-logo.png)
+<div style="width: 100%; max-width: 300px; height: 150px; background-image: url(https://github.com/thifacco/swui-angular/blob/master/src/assets/images/swui-logo.png) background-color: #6a0dad; display: flex; align-items: center; justify-content: center; color: white; font-family: Arial, sans-serif; font-size: 20px; text-align: center;">
 </div>
 
 
