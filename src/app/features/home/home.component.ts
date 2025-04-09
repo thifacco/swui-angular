@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeRepositoryService } from '../../data/repositories/home-repository.service';
-import { IPeopleItem } from '../../data/interfaces/people';
+import { HomeRepositoryService } from './data/repositories/home-repository.service';
+import { IPeopleItem } from './data/interfaces/people';
 import { FormControl } from '@angular/forms';
 import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap, tap, throwError } from 'rxjs';
 
