@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MoviesComponent } from './movies.component';
+import { MoviesComponent } from './views/movies/movies.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { LoadingComponent } from 'src/app/features/shared/components/loading/loading.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
