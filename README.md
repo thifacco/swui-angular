@@ -40,15 +40,15 @@ Esse comando irá iniciar a aplicação e abrir automaticamente o endereço [htt
 
 ### 1 - Quando você acessar a url do projeto, verá a Home Page.
 
-![Homepage image](https://github.com/thifacco/url-shortener/blob/master/public/screenshots/home.png)
+![Homepage image](https://github.com/thifacco/swui-angular/blob/master/src/assets/screenshots/home.png)
 
 ### 2 - Você pode navegar pela página de Filmes.
 
-![movies](https://github.com/thifacco/url-shortener/blob/master/public/screenshots/post-url.png)
+![movies](https://github.com/thifacco/swui-angular/blob/master/src/assets/screenshots/movies.png)
 
 ### 3 - Você pode navegar pela página de Naves.
 
-![starships](https://github.com/thifacco/url-shortener/blob/master/public/screenshots/get-urls.png)
+![starships](https://github.com/thifacco/swui-angular/blob/master/src/assets/screenshots/starships.png)
 
 
 ## Features
