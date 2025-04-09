@@ -1,12 +1,4 @@
-<img src="https://github.com/thifacco/swui-angular/blob/master/src/assets/images/swui-logo.png" alt="Logotipo" style="max-width: 100%; max-height: 100%; background-color: #6a0dad;">
-
-<style>
-.markdown-body img {
-    max-width: 100%;
-    box-sizing: content-box;
-    background-color: #6a0dad !important;
-}
-</style>
+<img src="src/assets/images/swui-logo.png" alt="Logotipo" style="max-width: 100%; max-height: 100%; background-color: #6a0dad;">
 
 
 ## Star Wars UI
