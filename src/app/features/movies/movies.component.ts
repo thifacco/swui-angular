@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IMovieItem } from '../../data/interfaces/movie';
+import { IMovieItem } from './data/interfaces/movie';
 // import { MoviesFakeService } from '../../data/repositories/movies-fake.service';
-import { MoviesRepositoryService } from '../../data/repositories/movies-repository.service';
+import { MoviesRepositoryService } from './data/repositories/movies-repository.service';
 
 @Component({
   selector: 'app-movies',
