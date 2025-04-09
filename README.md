@@ -1,4 +1,4 @@
-<img src="src/assets/images/swui-logo.png" alt="Logotipo" style="max-width: 100%; max-height: 100%; background-color: #6a0dad;">
+![Logo of the project](https://github.com/thifacco/swui-angular/blob/master/src/assets/images/swui-logo.jpg)
 
 
 ## Star Wars UI
