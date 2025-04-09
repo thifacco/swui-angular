@@ -1,4 +1,6 @@
+<div style="width: 100%; max-width: 300px; height: 150px; background-color: #7b1fa2; display: flex; align-items: center; justify-content: center;">
 ![Logo of the project](https://github.com/thifacco/swui-angular/blob/master/src/assets/images/swui-logo.png)
+</div>
 
 
 ## Star Wars UI
