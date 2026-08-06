@@ -1,14 +1,5 @@
 <h1>Todos os Filmes</h1>
 
-<!-- <div *ngIf="$moviesFake | async as movies; else notFound">
-   <div *ngFor="let movie of movies">
-      <p [textContent]="movie.title"></p>
-   </div>
-</div>
-<ng-template #notFound>
-   <p>Nenhum filme encontrado :(</p>
-</ng-template> -->
-
 <mat-table [dataSource]="movies" class="mat-elevation-z8" *ngIf="movies?.length">
    <ng-container matColumnDef="episode_id">
       <mat-header-cell *matHeaderCellDef> Episódio </mat-header-cell>

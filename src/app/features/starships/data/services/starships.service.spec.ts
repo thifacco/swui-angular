@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StarshipsRepositoryService } from './starships-repository.service';
+import { StarshipsService } from './starships.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('StarshipsRepositoryService', () => {
-  let service: StarshipsRepositoryService;
+describe('StarshipsService', () => {
+  let service: StarshipsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -12,7 +12,7 @@ describe('StarshipsRepositoryService', () => {
         HttpClientTestingModule
       ]
     });
-    service = TestBed.inject(StarshipsRepositoryService);
+    service = TestBed.inject(StarshipsService);
   });
 
   it('should be created', () => {

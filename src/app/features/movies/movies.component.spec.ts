@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
-import { MoviesComponent } from './views/movies/movies.component';
-import { HttpClient, HttpHandler } from '@angular/common/http';
-import { LoadingComponent } from 'src/app/features/shared/components/loading/loading.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MoviesComponent } from './movies.component';
+import { MOVIES_SERVICE } from './data/movies-service.token';
 
 describe('MoviesComponent', () => {
   let component: MoviesComponent;
@@ -11,16 +10,11 @@ describe('MoviesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ 
-        MoviesComponent,
-        LoadingComponent
-      ],
       imports: [
-        MatProgressSpinnerModule
+        MoviesComponent
       ],
       providers: [
-        HttpClient,
-        HttpHandler
+        { provide: MOVIES_SERVICE, useValue: { listMovies: () => of([]) } }
       ]
     })
     .compileComponents();

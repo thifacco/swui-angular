@@ -1,16 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeRepositoryService } from './data/repositories/home-repository.service';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { HomeService } from './data/services/home.service';
 import { IPeopleItem } from './data/interfaces/people';
-import { FormControl } from '@angular/forms';
+import { LoadingComponent } from '../shared/components/loading/loading.component';
 import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterLink,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatTableModule,
+    MatCardModule,
+    LoadingComponent
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  peopleInputSearch = new FormControl();
+  peopleInputSearch = new FormControl('', { nonNullable: true });
   loading = false;
 
   errorMessage = '';
@@ -49,7 +69,7 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['name', 'height', 'mass'];
   people: IPeopleItem[] = [];
 
-  constructor(private homeService: HomeRepositoryService) {}
+  constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
   }

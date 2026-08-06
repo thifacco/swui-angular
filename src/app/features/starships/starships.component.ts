@@ -1,14 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { StarshipsRepositoryService } from './data/repositories/starships-repository.service';
-import { combineLatest, debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { StarshipsService } from './data/services/starships.service';
+import { Subject, combineLatest, debounceTime, distinctUntilChanged, filter, map, switchMap, takeUntil, tap } from 'rxjs';
 import { IStarshipItem } from './data/interfaces/starship';
-import { FormControl } from '@angular/forms';
-import { PageEvent } from '@angular/material/paginator';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { StarshipDetails } from './data/interfaces/starship-details';
+import { LoadingComponent } from '../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-starships',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    LoadingComponent
+  ],
   templateUrl: './starships.component.html',
   styleUrls: ['./starships.component.scss'],
   animations: [
@@ -20,16 +37,16 @@ import { StarshipDetails } from './data/interfaces/starship-details';
   ],
 })
 
-export class StarshipsComponent implements OnInit {
+export class StarshipsComponent implements OnInit, OnDestroy {
 
-  starshipInputSearch = new FormControl();
+  starshipInputSearch = new FormControl('', { nonNullable: true });
   starships: IStarshipItem[] = [];
   starshipsLatest: IStarshipItem[] = [];
   starshipsCount: number = 0;
   starshipsPageIndexStart: number = 0;
   starshipsDisplayItemsPerPage: number = 10;
 
-  starshipsList$ = this.starshipRepositoryService.getAll().pipe(
+  starshipsList$ = this.starshipsService.getAll().pipe(
     distinctUntilChanged(),
     map(data => {
       this.starships = data.results;
@@ -46,7 +63,7 @@ export class StarshipsComponent implements OnInit {
     filter(inputSearchvalue => inputSearchvalue.length >= 3),
     tap(inputSearchValue => console.log(`Buscando por ${inputSearchValue}`)),
     distinctUntilChanged(),
-    switchMap(inputSearchValue => this.starshipRepositoryService.getSearch(inputSearchValue)),
+    switchMap(inputSearchValue => this.starshipsService.getSearch(inputSearchValue)),
     map(data => {
       this.starships = data.results; 
       this.starshipsCount = data.count;
@@ -55,8 +72,10 @@ export class StarshipsComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'model', 'starship_class', 'expand'];
   expandedElement: StarshipDetails | undefined;
-  
-  constructor(private starshipRepositoryService: StarshipsRepositoryService) {}
+
+  private readonly destroyed$ = new Subject<void>();
+
+  constructor(private starshipsService: StarshipsService) {}
 
   ngOnInit(): void {
     const observables = {
@@ -64,14 +83,18 @@ export class StarshipsComponent implements OnInit {
       starshipsSearch: this.starshipsSearch$
     }
 
-    const combineObservables = combineLatest(observables);
-    combineObservables.subscribe();
+    combineLatest(observables).pipe(takeUntil(this.destroyed$)).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   handlePageChange(event: PageEvent) {
     const pageIndex = event.pageIndex + 1;
-    
-    this.starshipRepositoryService.getAll(pageIndex).subscribe(
+
+    this.starshipsService.getAll(pageIndex).pipe(takeUntil(this.destroyed$)).subscribe(
       data => this.starships = data.results
     );
   }
