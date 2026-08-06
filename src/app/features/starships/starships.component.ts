@@ -39,7 +39,7 @@ import { LoadingComponent } from '../shared/components/loading/loading.component
 
 export class StarshipsComponent implements OnInit, OnDestroy {
 
-  starshipInputSearch = new FormControl();
+  starshipInputSearch = new FormControl('', { nonNullable: true });
   starships: IStarshipItem[] = [];
   starshipsLatest: IStarshipItem[] = [];
   starshipsCount: number = 0;

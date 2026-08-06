@@ -30,7 +30,7 @@ import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap,
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  peopleInputSearch = new FormControl();
+  peopleInputSearch = new FormControl('', { nonNullable: true });
   loading = false;
 
   errorMessage = '';
