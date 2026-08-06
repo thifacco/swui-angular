@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { MoviesComponent } from './movies.component';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { MOVIES_SERVICE } from './data/movies-service.token';
 
 describe('MoviesComponent', () => {
   let component: MoviesComponent;
@@ -13,8 +14,7 @@ describe('MoviesComponent', () => {
         MoviesComponent
       ],
       providers: [
-        HttpClient,
-        HttpHandler
+        { provide: MOVIES_SERVICE, useValue: { listMovies: () => of([]) } }
       ]
     })
     .compileComponents();
