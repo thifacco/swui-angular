@@ -6,8 +6,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { routes } from './app.routes';
 import { MOVIES_SERVICE } from './features/movies/data/movies-service.token';
-import { MoviesFakeService } from './features/movies/data/repositories/movies-fake.service';
-import { MoviesRepositoryService } from './features/movies/data/repositories/movies-repository.service';
+import { MoviesFakeService } from './features/movies/data/services/movies-fake.service';
+import { MoviesService } from './features/movies/data/services/movies.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     {
       provide: MOVIES_SERVICE,
-      useFactory: () => environment.useFakeMoviesData ? inject(MoviesFakeService) : inject(MoviesRepositoryService)
+      useFactory: () => environment.useFakeMoviesData ? inject(MoviesFakeService) : inject(MoviesService)
     }
   ]
 };

@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
-import { HomeRepositoryService } from './data/repositories/home-repository.service';
+import { HomeService } from './data/services/home.service';
 import { IPeopleItem } from './data/interfaces/people';
 import { LoadingComponent } from '../shared/components/loading/loading.component';
 import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap, tap, throwError } from 'rxjs';
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['name', 'height', 'mass'];
   people: IPeopleItem[] = [];
 
-  constructor(private homeService: HomeRepositoryService) {}
+  constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
   }

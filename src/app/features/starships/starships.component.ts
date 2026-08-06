@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { StarshipsRepositoryService } from './data/repositories/starships-repository.service';
+import { StarshipsService } from './data/services/starships.service';
 import { Subject, combineLatest, debounceTime, distinctUntilChanged, filter, map, switchMap, takeUntil, tap } from 'rxjs';
 import { IStarshipItem } from './data/interfaces/starship';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -46,7 +46,7 @@ export class StarshipsComponent implements OnInit, OnDestroy {
   starshipsPageIndexStart: number = 0;
   starshipsDisplayItemsPerPage: number = 10;
 
-  starshipsList$ = this.starshipRepositoryService.getAll().pipe(
+  starshipsList$ = this.starshipsService.getAll().pipe(
     distinctUntilChanged(),
     map(data => {
       this.starships = data.results;
@@ -63,7 +63,7 @@ export class StarshipsComponent implements OnInit, OnDestroy {
     filter(inputSearchvalue => inputSearchvalue.length >= 3),
     tap(inputSearchValue => console.log(`Buscando por ${inputSearchValue}`)),
     distinctUntilChanged(),
-    switchMap(inputSearchValue => this.starshipRepositoryService.getSearch(inputSearchValue)),
+    switchMap(inputSearchValue => this.starshipsService.getSearch(inputSearchValue)),
     map(data => {
       this.starships = data.results; 
       this.starshipsCount = data.count;
@@ -75,7 +75,7 @@ export class StarshipsComponent implements OnInit, OnDestroy {
 
   private readonly destroyed$ = new Subject<void>();
 
-  constructor(private starshipRepositoryService: StarshipsRepositoryService) {}
+  constructor(private starshipsService: StarshipsService) {}
 
   ngOnInit(): void {
     const observables = {
@@ -94,7 +94,7 @@ export class StarshipsComponent implements OnInit, OnDestroy {
   handlePageChange(event: PageEvent) {
     const pageIndex = event.pageIndex + 1;
 
-    this.starshipRepositoryService.getAll(pageIndex).pipe(takeUntil(this.destroyed$)).subscribe(
+    this.starshipsService.getAll(pageIndex).pipe(takeUntil(this.destroyed$)).subscribe(
       data => this.starships = data.results
     );
   }

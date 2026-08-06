@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MoviesRepositoryService } from './movies-repository.service';
+import { MoviesService } from './movies.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('MoviesRepositoryService', () => {
-  let service: MoviesRepositoryService;
+describe('MoviesService', () => {
+  let service: MoviesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -12,7 +12,7 @@ describe('MoviesRepositoryService', () => {
         HttpClientTestingModule
       ]
     });
-    service = TestBed.inject(MoviesRepositoryService);
+    service = TestBed.inject(MoviesService);
   });
 
   it('should be created', () => {
