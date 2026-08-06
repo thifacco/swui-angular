@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { StarshipsRepositoryService } from './data/repositories/starships-repository.service';
-import { combineLatest, debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs';
+import { Subject, combineLatest, debounceTime, distinctUntilChanged, filter, map, switchMap, takeUntil, tap } from 'rxjs';
 import { IStarshipItem } from './data/interfaces/starship';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { StarshipDetails } from './data/interfaces/starship-details';
@@ -37,7 +37,7 @@ import { LoadingComponent } from '../shared/components/loading/loading.component
   ],
 })
 
-export class StarshipsComponent implements OnInit {
+export class StarshipsComponent implements OnInit, OnDestroy {
 
   starshipInputSearch = new FormControl();
   starships: IStarshipItem[] = [];
@@ -72,7 +72,9 @@ export class StarshipsComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'model', 'starship_class', 'expand'];
   expandedElement: StarshipDetails | undefined;
-  
+
+  private readonly destroyed$ = new Subject<void>();
+
   constructor(private starshipRepositoryService: StarshipsRepositoryService) {}
 
   ngOnInit(): void {
@@ -81,14 +83,18 @@ export class StarshipsComponent implements OnInit {
       starshipsSearch: this.starshipsSearch$
     }
 
-    const combineObservables = combineLatest(observables);
-    combineObservables.subscribe();
+    combineLatest(observables).pipe(takeUntil(this.destroyed$)).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   handlePageChange(event: PageEvent) {
     const pageIndex = event.pageIndex + 1;
-    
-    this.starshipRepositoryService.getAll(pageIndex).subscribe(
+
+    this.starshipRepositoryService.getAll(pageIndex).pipe(takeUntil(this.destroyed$)).subscribe(
       data => this.starships = data.results
     );
   }
