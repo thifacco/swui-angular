@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { StarshipsService } from './data/services/starships.service';
+import { STARSHIPS_SERVICE } from './data/starships-service.token';
 import { Subject, combineLatest, debounceTime, distinctUntilChanged, filter, map, switchMap, takeUntil, tap } from 'rxjs';
 import { IStarshipItem } from './data/interfaces/starship';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -38,6 +38,8 @@ import { LoadingComponent } from '../shared/components/loading/loading.component
 })
 
 export class StarshipsComponent implements OnInit, OnDestroy {
+
+  private readonly starshipsService = inject(STARSHIPS_SERVICE);
 
   starshipInputSearch = new FormControl('', { nonNullable: true });
   starships: IStarshipItem[] = [];
@@ -74,8 +76,6 @@ export class StarshipsComponent implements OnInit, OnDestroy {
   expandedElement: StarshipDetails | undefined;
 
   private readonly destroyed$ = new Subject<void>();
-
-  constructor(private starshipsService: StarshipsService) {}
 
   ngOnInit(): void {
     const observables = {

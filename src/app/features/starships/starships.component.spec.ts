@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { StarshipsComponent } from './starships.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { STARSHIPS_SERVICE } from './data/starships-service.token';
 
 describe('StarshipsComponent', () => {
   let component: StarshipsComponent;
@@ -16,7 +18,14 @@ describe('StarshipsComponent', () => {
       providers: [
         HttpClient,
         HttpHandler,
-        provideAnimations()
+        provideAnimations(),
+        {
+          provide: STARSHIPS_SERVICE,
+          useValue: {
+            getAll: () => of({ count: 0, next: '', previous: null, results: [] }),
+            getSearch: () => of({ count: 0, next: '', previous: null, results: [] })
+          }
+        }
       ]
     })
     .compileComponents();
