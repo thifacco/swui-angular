@@ -54,6 +54,15 @@ describe('StarshipsFakeService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('deve usar a pagina 1 por padrao quando nenhuma pagina for informada', () => {
+    service.getAll().subscribe(result => {
+      expect(result.results.length).toBe(10);
+    });
+
+    const req = httpMock.expectOne(environment.baseApiStarshipsFake);
+    req.flush({ results: starships });
+  });
+
   it('deve retornar a primeira pagina com 10 itens e indicar que ha proxima pagina', () => {
     service.getAll(1).subscribe(result => {
       expect(result.count).toBe(12);
