@@ -24,4 +24,8 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deve iniciar com a navegacao oculta', () => {
+    expect(component.showNavigation).toBe(false);
+  });
 });
