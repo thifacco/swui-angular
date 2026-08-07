@@ -2,7 +2,41 @@
 
 
 ## Star Wars UI
-Essa é uma aplicação desenvolvida com Angular para treinar consumo de API proposto pelo desafio #7DaysOfCode da Alura.
+Essa é uma aplicação desenvolvida com Angular 15+ para treinar consumo de API proposto pelo desafio que  #7DaysOfCode da Alura que participei em 07/07/2023.
+
+
+## Features
+
+As principais funcionalidades dessa aplicação são:
+ - Cabeçalho fixo, presente em todas as páginas
+   - logo do projeto e link para seguir o repositório no GitHub
+   - menu lateral (ícone de hambúrguer) com navegação para Home, Filmes e Naves
+ - Página principal da aplicação (Home)
+   - mensagem de boas-vindas
+   - campo de busca por nome de personagens de Star Wars
+   - lista numa `mat-table` os personagens encontrados, com nome, altura e peso
+   - indicador de carregamento e mensagem de erro quando a busca falha
+   - cartões de destaque com atalho para as páginas de Filmes e de Naves
+ - Página de Filmes
+   - lista numa `mat-table` todos os filmes da franquia Star Wars, com episódio, título e data de lançamento
+ - Página de Naves
+   - exibe campo de busca por nome, modelo ou classe da nave
+   - lista numa `mat-table` as naves encontradas na busca ou a listagem completa delas
+   - cada linha pode ser expandida para exibir detalhes da nave (fabricante, capacidade de carga, avaliação de hiperdrive, tamanho, velocidade máxima, tripulação e passageiros)
+   - paginação de resultados
+
+
+## Fonte de dados
+
+A aplicação foi originalmente desenvolvida para consumir a [SWAPI - Star Wars API](https://swapi.dev/api), porém essa API pública foi descontinuada e não responde mais às requisições.
+
+Para manter a aplicação funcional, a solução adotada foi passar a consumir um **mock de dados local**, armazenado em `src/assets/data` (ex: [films.json](src/assets/data/films.json) e [starships.json](src/assets/data/starships.json)), no lugar da API remota.
+
+Essa troca é feita de forma transparente para os componentes através de **injection tokens** (`MOVIES_SERVICE` e `STARSHIPS_SERVICE`). Cada token expõe uma interface de serviço (`IMoviesService` / `IStarshipsService`) que possui duas implementações:
+ - um serviço "real" (`MoviesService` / `StarshipsService`), que faz as chamadas HTTP para a API remota da SWAPI;
+ - um serviço "fake" (`MoviesFakeService` / `StarshipsFakeService`), que lê os arquivos JSON locais em `src/assets/data` e reproduz o mesmo formato de resposta da API (incluindo paginação e busca, no caso das naves).
+
+A escolha de qual implementação será injetada é feita em [app.config.ts](src/app/app.config.ts), através de um `useFactory` que verifica as flags `useFakeMoviesData` e `useFakeStarshipsData` definidas em [environment.ts](src/environments/environment.ts) / [environment.development.ts](src/environments/environment.development.ts). Como a API remota está indisponível, os componentes (`MoviesComponent` e `StarshipsComponent`) continuam consumindo apenas o token de injeção, sem qualquer conhecimento de qual fonte de dados está sendo usada por trás.
 
 
 ## Tecnologias 
@@ -51,24 +85,9 @@ Esse comando irá iniciar a aplicação e abrir automaticamente o endereço [htt
 ![starships](https://github.com/thifacco/swui-angular/blob/master/src/assets/screenshots/starships.png)
 
 
-## Features
-
-As principais funcionalidades dessa aplicação são:
- - Página principal da aplicação
-   - exibe campo de busca por nome de personagens de Star Wars 
-   - lista numa `mat-table` os nomes encontrados
- - Página de Filmes
-   - lista numa `mat-table` com todos os filmes da franquia Star Wars
- - Página de Naves
-   - exibe campo de busca por nome da nave da franquia Star Wars
-   - lista numa `mat-table` as naves encontradas na busca ou a listagem completa delas
-   - exibe detalhes de cada nave em cada item da `mat-table`
-   - paginação de resultados
-
-
 ## Links
   - Repositório: [https://github.com/thifacco/swui-angular](https://github.com/thifacco/swui-angular)
-  - Star Wars API (SWAPI): [https://swapi.dev](https://swapi.dev)
+  - Star Wars API (descontinuada): [https://swapi.dev](https://swapi.dev)
   - Netlify View: [https://swui-angular.netlify.app/](https://swui-angular.netlify.app/)
 
 ## Versioning
