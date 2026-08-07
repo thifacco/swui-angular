@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IStarship } from '../interfaces/starship';
+import { IStarshipsService } from '../starships-service.token';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StarshipsService {
+export class StarshipsService implements IStarshipsService {
   private readonly baseUrl = environment.swapiAPIObject.base.url + environment.swapiAPIObject.resources.starships;
 
   constructor(private httpClient: HttpClient) { }
